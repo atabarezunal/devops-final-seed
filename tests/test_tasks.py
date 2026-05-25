@@ -2,12 +2,14 @@ def test_index(client):
     response = client.get("/")
 
     assert response.status_code == 200
-    
+
+
 def test_get_tasks(client):
     response = client.get("/tasks")
 
     assert response.status_code == 200
-    
+
+
 def test_create_task(client):
     response = client.post(
         "/tasks",
@@ -21,6 +23,7 @@ def test_create_task(client):
 
     assert response.status_code == 201
     assert data["title"] == "Test"
+
 
 def test_update_task(client):
     created = client.post(
@@ -43,7 +46,8 @@ def test_update_task(client):
 
     assert response.status_code == 200
     assert data["title"] == "New"
-    
+
+
 def test_delete_task(client):
     created = client.post(
         "/tasks",
