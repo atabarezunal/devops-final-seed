@@ -47,3 +47,16 @@ Lean el documento del trabajo final para los detalles completos de cada requisit
 ---
 
 *DevOps & Automatización — UNAL Sede Manizales — 2026-1*
+
+---
+
+## Documentación
+
+La documentación técnica del proyecto se encuentra en la carpeta `docs/`.
+
+- [Backend](docs/backend.md)
+- [Observabilidad](docs/observability.md)
+- [Seguridad](docs/security.md)
+
+---
+
