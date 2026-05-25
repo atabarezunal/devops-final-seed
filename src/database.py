@@ -1,5 +1,5 @@
 import sqlite3
-from config import Config
+from src.config import Config
 
 
 def get_db():

@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from prometheus_client import Counter, generate_latest
-from config import Config
-from database import get_db, init_db
-from logger import logger
+from src.config import Config
+from src.database import get_db, init_db
+from src.logger import logger
 
 app = Flask(__name__)
 
