@@ -37,3 +37,10 @@ La cultura CALMS se traduce en decisiones concretas del proyecto:
 - Prometheus scrapea a la API por su nombre de servicio.
 - Kubernetes replica la misma intención con Deployment, Service, ConfigMap, PersistentVolumeClaim e Ingress.
 - SQLite se persiste por volumen tanto en Docker Compose como en Kubernetes, manteniendo la misma ruta de datos `/data/tasks.db`.
+
+## Elementos entregados
+
+- Contenerización con `Dockerfile` y `docker-compose.yml`.
+- Observabilidad con Prometheus, Grafana y dashboard provisionado automáticamente.
+- Automatización CI/CD con GitHub Actions.
+- Base de despliegue en Kubernetes para evolución futura.

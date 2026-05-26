@@ -86,6 +86,61 @@ La configuración de Prometheus y Grafana se encuentra desacoplada del backend y
 
 ---
 
+## Provisioning de Grafana
+
+Grafana quedó configurado para arrancar sin intervención manual mediante archivos de provisioning montados desde Docker Compose.
+
+### Datasource
+
+El datasource de Prometheus se carga automáticamente desde:
+
+```text
+grafana/provisioning/datasources/datasources.yml
+```
+
+Este datasource apunta a:
+
+```text
+http://prometheus:9090
+```
+
+### Dashboards
+
+La carga automática de dashboards se define en:
+
+```text
+grafana/provisioning/dashboards/dashboards.yml
+```
+
+Los JSON de dashboards se leen desde:
+
+```text
+grafana/dashboards/
+```
+
+### Dashboard incluido
+
+Se añadió un dashboard base en:
+
+```text
+grafana/dashboards/dashboard_todo.json
+```
+
+Este dashboard incluye varias vistas sobre la métrica `app_requests_total` y métricas de salud de Prometheus como `up` y `scrape_duration_seconds`.
+
+### Montaje en Docker Compose
+
+Grafana monta estas rutas en el contenedor:
+
+```text
+/etc/grafana/provisioning
+/etc/grafana/dashboards
+```
+
+Con esto, el datasource y los paneles quedan disponibles al iniciar el stack con `docker compose up --build`.
+
+---
+
 ## Logs estructurados
 
 Se implementó un sistema de logs estructurados utilizando el módulo `logging` de Python.

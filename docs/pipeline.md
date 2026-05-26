@@ -18,11 +18,24 @@ El workflow [`ci-cd.yml`](../.github/workflows/ci-cd.yml) ejecuta las siguientes
 6. Versionado adicional con `latest` para la última revisión exitosa del flujo.
 7. Publicación de artefactos de build para trazabilidad.
 
+El workflow se ejecuta sobre Python 3.11 y genera artefactos de cobertura, auditoría de seguridad y una imagen Docker etiquetada con el SHA completo del commit.
+
 ## Artefactos generados
 
 - `coverage.xml`
 - `pip-audit-report.json`
 - `todo-api-<sha>.tar`
+
+## Validación local equivalente
+
+Antes del push, el proyecto puede validarse con los mismos pasos del pipeline:
+
+```bash
+flake8 src tests
+pytest --cov=src --cov-report=term-missing
+pip-audit -r requirements.txt -r requirements-dev.txt -f json -o pip-audit-report.json
+docker build -t todo-api:local .
+```
 
 ## Disparadores
 

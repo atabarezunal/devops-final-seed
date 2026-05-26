@@ -25,6 +25,8 @@ src/
 
 La aplicación utiliza SQLite como base de datos ligera para simplificar el despliegue y reducir dependencias externas.
 
+Para despliegue local, la aplicación se ejecuta dentro de Docker con `gunicorn` y se expone por el puerto `5000`.
+
 ---
 
 ## Endpoints implementados
@@ -132,6 +134,12 @@ Ejecutar aplicación:
 python src/app.py
 ```
 
+Ejecución con Docker Compose:
+
+```bash
+docker compose up --build
+```
+
 La API queda disponible en:
 
 ```text
@@ -157,6 +165,12 @@ Las pruebas cubren operaciones principales de la API:
 - Creación de tareas
 - Actualización de tareas
 - Eliminación de tareas
+
+## Observabilidad asociada
+
+La API expone `/health` y `/metrics` para integrarse con Prometheus y Grafana.
+
+La métrica `app_requests_total` se incrementa en cada request mediante un hook `before_request`, lo que permite visualizar tráfico y actividad en el dashboard incluido en `grafana/dashboards/dashboard_todo.json`.
 
 ---
 
